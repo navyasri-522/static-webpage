@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .form-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      form {
+        background-color: #f5f5f5;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #333;
+        text-align: center;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border: 1px solid #333;
+        border-radius: 5px;
+        font-size: 1.2rem;
+      }
+
+      input[type="submit"] {
+        background-color: #333;
+        color: #fff;
+        padding: 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Login Form -->
+    <div class="form-container">
+      <form>
+        <h2>Login</h2>
+        <input type="text" placeholder="Username">
+        <input type="password" placeholder="Password">
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+
+    <script>
+      const form = document.querySelector("form");
+      form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const username = form.elements[0].value;
+        const password = form.elements[1].value;
+
+        // Static Data
+        const users = [
+          { username: "user1", password: "pass1" },
+          { username: "user2", password: "pass2" }
+        ];
+
+        const user = users.find(
+          user => user.username === username && user.password === password
+        );
+        if (user) {
+          // Redirect to dashboard
+          window.location.href = "dashboard.html";
+        } else {
+          alert("Incorrect username or password");
+        }
+      });
+    </script>
+  </body>
+</html>
